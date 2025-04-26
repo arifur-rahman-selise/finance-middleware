@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<api context="/account" name="account" xmlns="http://ws.apache.org/ns/synapse">
+<api name="transactionHistory" context="/transactionhistory" xmlns="http://ws.apache.org/ns/synapse">
     <resource methods="GET" uri-template="/">
         <inSequence>
-            <http.get configKey="info">
+            <http.get configKey="transactionList">
                 <relativePath></relativePath>
                 <headers>[]</headers>
                 <forceScAccepted>false</forceScAccepted>
