@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/publishMessages" name="KafkaTransport" xmlns="http://ws.apache.org/ns/synapse">
+    <resource methods="POST" uri-template="/">
+        <inSequence>
+            <kafkaTransport.publishMessages configKey="KafkaConnection">
+                <topic>test</topic>
+                <partitionNo>{${0}}</partitionNo>
+                <contentType></contentType>
+                <key></key>
+                <keySchema></keySchema>
+                <keySchemaId></keySchemaId>
+                <valueSchema></valueSchema>
+                <valueSchemaId></valueSchemaId>
+                <keySchemaSubject></keySchemaSubject>
+                <keySchemaVersion></keySchemaVersion>
+                <keySchemaSoftDeleted>false</keySchemaSoftDeleted>
+                <valueSchemaSubject></valueSchemaSubject>
+                <valueSchemaVersion></valueSchemaVersion>
+                <valueSchemaSoftDeleted>false</valueSchemaSoftDeleted>
+                <value></value>
+            </kafkaTransport.publishMessages>
+        </inSequence>
+        <faultSequence>
+        </faultSequence>
+    </resource>
+</api>
