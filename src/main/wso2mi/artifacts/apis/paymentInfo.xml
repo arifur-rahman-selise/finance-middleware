@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+    <api context="/paymentinfo" name="paymentInfo" xmlns="http://ws.apache.org/ns/synapse">
+        <resource methods="GET" uri-template="/">
+            <inSequence>
+            <http.get configKey="paymentInfoConnection">
+    <relativePath ></relativePath>
+    <headers >[]</headers>
+    <forceScAccepted >false</forceScAccepted>
+    <disableChunking >false</disableChunking>
+    <forceHttp10 >false</forceHttp10>
+    <noKeepAlive >false</noKeepAlive>
+    <responseVariable >paymentInfoResponse</responseVariable>
+    <overwriteBody >true</overwriteBody>
+</http.get>
+
+
+<datamapper config="resources:datamapper/PaymentInfoMapper/PaymentInfoMapper.dmc" inputSchema="resources:datamapper/PaymentInfoMapper/PaymentInfoMapper_inputSchema.json" outputSchema="resources:datamapper/PaymentInfoMapper/PaymentInfoMapper_outputSchema.json" /><log category="INFO"   logMessageID="false" logFullPayload="false" >
+    <message>${payload}</message>
+</log><respond description="Respond with mapped payment info" /></inSequence>
+            <faultSequence>
+            </faultSequence>
+        </resource>
+    </api>

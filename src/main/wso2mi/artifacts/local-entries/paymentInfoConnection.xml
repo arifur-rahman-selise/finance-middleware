@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<localEntry key="paymentInfoConnection" xmlns="http://ws.apache.org/ns/synapse">
+  <http.init>
+    <connectionType>HTTPS</connectionType>
+    <baseUrl>https://dummyjson.com/c/a228-cefb-43e5-8eb1</baseUrl>
+    <authType>None</authType>
+    <timeoutAction>Never</timeoutAction>
+    <retryCount>0</retryCount>
+    <retryDelay>0</retryDelay>
+    <suspendInitialDuration>-1</suspendInitialDuration>
+    <suspendProgressionFactor>1</suspendProgressionFactor>
+    <name>paymentInfoConnection</name>
+  </http.init>
+</localEntry>
