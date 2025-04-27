@@ -1,0 +1,13 @@
+openapi: 3.0.1
+info:
+  title: loanDetails
+  description: API Definition of loanDetails
+  version: 1.0.0
+servers:
+- url: http://localhost:8290/loandetails
+paths:
+  /:
+    get:
+      responses:
+        default:
+          description: Default response

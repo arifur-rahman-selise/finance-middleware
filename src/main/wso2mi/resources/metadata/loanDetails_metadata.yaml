@@ -1,0 +1,10 @@
+---
+key: "loanDetails-1.0.0"
+name : "loanDetails"
+displayName : "loanDetails"
+description: "loanDetails"
+version: "1.0.0"
+serviceUrl: "https://{MI_HOST}:{MI_PORT}/loandetails"
+definitionType: "OAS3"
+securityType: "BASIC"
+mutualSSLEnabled: false
