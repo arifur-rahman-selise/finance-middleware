@@ -66,7 +66,6 @@ interface OutputRoot {
 export function mapFunction(input: Root): OutputRoot {
     return {
         paymentAmount: input.data.amount,
-        paymentCurrency: input.data.currency,
         cardBrand: input.data.card_brand,
         cardLastDigits: input.data.card_last_four,
         paymentDate: input.data.created_at,
@@ -75,7 +74,8 @@ export function mapFunction(input: Root): OutputRoot {
         paymentInvoiceId: input.data.invoice_id,
         paymentTransactionId: input.data.transaction_id,
         paymentStatus: input.data.payment_status,
-        payeeAddress: input.data.billing_address.street + " " + input.data.billing_address.city + " " + input.data.billing_address.state + " " + input.data.billing_address.country
+        payeeAddress: input.data.billing_address.street + " " + input.data.billing_address.city + " " + input.data.billing_address.state + " " + input.data.billing_address.country,
+        paymentCurrency: input.data.currency
     }
 }
 

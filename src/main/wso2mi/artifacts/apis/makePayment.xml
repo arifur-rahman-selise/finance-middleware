@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/makepayment" name="makePayment" xmlns="http://ws.apache.org/ns/synapse">
+    <resource methods="POST" uri-template="/">
+        <inSequence>
+            <payloadFactory media-type="json" template-type="default">
+
+                <format>{ "cardNumber": "5555 5555 5555 4444", "expiry": "08/28", "CVC": "444" }</format>
+            </payloadFactory>
+            <http.post configKey="validateCardNumber">
+                <relativePath></relativePath>
+                <headers>[]</headers>
+                <requestBodyType>JSON</requestBodyType>
+                <requestBodyJson>${payload}</requestBodyJson>
+                <forceScAccepted>false</forceScAccepted>
+                <disableChunking>false</disableChunking>
+                <forceHttp10>false</forceHttp10>
+                <noKeepAlive>false</noKeepAlive>
+                <forcePostPutNobody>false</forcePostPutNobody>
+                <responseVariable>cardValidationResponse</responseVariable>
+                <overwriteBody>false</overwriteBody>
+            </http.post>
+
+
+            <filter xpath="${vars.cardValidationResponse.payload.valid == true}">
+                <then>
+
+
+                    <http.post configKey="validPaymentResponse">
+                        <relativePath></relativePath>
+                        <headers>[]</headers>
+                        <requestBodyType>JSON</requestBodyType>
+                        <requestBodyJson>${payload}</requestBodyJson>
+                        <forceScAccepted>false</forceScAccepted>
+                        <disableChunking>false</disableChunking>
+                        <forceHttp10>false</forceHttp10>
+                        <noKeepAlive>false</noKeepAlive>
+                        <forcePostPutNobody>false</forcePostPutNobody>
+                        <responseVariable>http_post_1</responseVariable>
+                        <overwriteBody>false</overwriteBody>
+                    </http.post>
+
+                    <log category="INFO" logMessageID="false" logFullPayload="false">
+                        <message>${vars.http_post_1.payload}</message>
+                    </log>
+                    <payloadFactory media-type="json" template-type="default">
+
+                        <format>{ "message": "Success", "valid": true, "data":
+                            ${vars.http_post_1.payload}}</format>
+                    </payloadFactory>
+                </then>
+                <else>
+                    <log category="ERROR" logMessageID="false" logFullPayload="false">
+                        <message>Invalid Id</message>
+                    </log>
+                    <payloadFactory media-type="json" template-type="default">
+
+                        <format>{ "message": "Invalid Card", "valid": false, "data": null }</format>
+                    </payloadFactory>
+                </else>
+            </filter>
+            <log category="INFO" logMessageID="false" logFullPayload="false">
+                <message>${payload}</message>
+            </log>
+            <respond />
+        </inSequence>
+        <faultSequence>
+        </faultSequence>
+    </resource>
+</api>
