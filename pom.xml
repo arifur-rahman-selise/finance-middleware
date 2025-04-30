@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<project
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd"
+    xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.microintegrator.projects</groupId>
     <artifactId>finance-middleware</artifactId>
@@ -128,7 +130,7 @@
                                 <goals>
                                     <goal>car</goal>
                                 </goals>
-                                <configuration/>
+                                <configuration />
                             </execution>
                         </executions>
                     </plugin>
@@ -148,9 +150,12 @@
                                     <artifactId>${project.artifactId}</artifactId>
                                     <groupId>${project.groupId}</groupId>
                                     <version>${project.version}</version>
-                                    <file>${project.build.directory}/${project.artifactId}_${project.version}.car</file>
-                                    <!-- Use the following configuration when archiveLocation is configured -->
-                                    <!-- <file>${archiveLocation}/${project.artifactId}_${project.version}.car</file> -->
+                                    <file>
+                                        ${project.build.directory}/${project.artifactId}_${project.version}.car</file>
+                                    <!-- Use the following configuration when archiveLocation is
+                                    configured -->
+                                    <!--
+                                    <file>${archiveLocation}/${project.artifactId}_${project.version}.car</file> -->
                                 </configuration>
                             </execution>
                         </executions>
@@ -168,7 +173,7 @@
         </profile>
         <profile>
             <id>test</id>
-            <build/>
+            <build />
             <properties>
                 <server.type>${testServerType}</server.type>
                 <server.host>${testServerHost}</server.host>
@@ -275,7 +280,7 @@
                                 </configuration>
                             </execution>
                         </executions>
-                        <configuration/>
+                        <configuration />
                     </plugin>
                     <plugin>
                         <artifactId>maven-antrun-plugin</artifactId>
@@ -292,14 +297,14 @@
                                     <target>
                                         <copy todir="${basedir}/target/tmp_docker/CompositeApps">
                                             <fileset dir="${basedir}/target">
-                                                <include name="*.car"/>
+                                                <include name="*.car" />
                                             </fileset>
                                         </copy>
                                     </target>
                                 </configuration>
                             </execution>
                         </executions>
-                        <configuration/>
+                        <configuration />
                     </plugin>
                     <!-- Build docker image -->
                     <plugin>
@@ -336,7 +341,7 @@
                                 </configuration>
                             </execution>
                         </executions>
-                        <configuration/>
+                        <configuration />
                     </plugin>
                 </plugins>
             </build>
@@ -400,7 +405,8 @@
         <test.server.port>9008</test.server.port>
         <test.server.path>/</test.server.path>
         <test.server.version>${project.runtime.version}</test.server.version>
-        <testServerDownloadLink>https://github.com/wso2/micro-integrator/releases/download/v${test.server.version}/wso2mi-${test.server.version}.zip</testServerDownloadLink>
+        <testServerDownloadLink>
+            https://github.com/wso2/micro-integrator/releases/download/v${test.server.version}/wso2mi-${test.server.version}.zip</testServerDownloadLink>
         <maven.test.skip>false</maven.test.skip>
     </properties>
     <dependencies>

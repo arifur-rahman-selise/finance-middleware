@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/kafkapublishtopic" name="kafkaPublishTopic" xmlns="http://ws.apache.org/ns/synapse">
+  <resource methods="POST" uri-template="/">
+    <inSequence>
+
+      <kafkaTransport.publishMessages configKey="LocalKafkaConnection">
+        <topic>test</topic>
+        <partitionNo>0</partitionNo>
+        <keySchemaSoftDeleted>false</keySchemaSoftDeleted>
+        <valueSchemaSoftDeleted>false</valueSchemaSoftDeleted>
+      </kafkaTransport.publishMessages>
+    </inSequence>
+    <faultSequence>
+    </faultSequence>
+  </resource>
+</api>
